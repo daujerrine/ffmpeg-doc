@@ -11,8 +11,12 @@
 \usepackage[font=small,labelfont=bf]{caption}
 \newcommand{\tss}[1]{\textsuperscript{#1}}
 \usepackage{parskip}
+\usepackage{svg}
 
 \begin{document}
+\let\includegraphicsold\includegraphics
+\renewcommand{\includegraphics}[1]{\includesvg{#1}}
+
 \title{DRAFT: Writing a codec for \texttt{libavcodec}}
 \author{Anamitra Ghorui}
 \date{\emph{Last updated \today}}
@@ -79,10 +83,15 @@ Timestamps are simply a numerical quantity that represents time. Used in the fol
 \end{enumerate}
 
 \section{Distinction Between Container Formats and Encoded Audio/Video Data}
+\begin{quote}
+\textbf{ Note for Developers with a Background in Object Oriented Languages}
 
-\subsubsection{Note for Developers with a Background in Object Oriented Languages}
+C does not have classes and similar provisions in the language, however, a very 
+similar method of programming is observable over here in the form of 
+\emph{context} structs and functions. Storage structs are used to handle 
+repetitive patterns such as for a set of decoder functions, parameters etc.
 
-C does not have classes and similar provisions in the language, however, a very similar method of programming is observable over here in the form of \emph{context} structs and functions. Storage structs are used to handle repetitive patterns such as for a set of decoder functions, parameters etc.
+\includegraphics{images/classes_and_c.svg}
+\end{quote}
 
-%\includegraphics{images/classes\_and\_c.svg}
 \end{document}

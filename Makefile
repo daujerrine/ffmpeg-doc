@@ -3,7 +3,7 @@
 # Run `make` to generate the documentation
 #
 # This makefile assumes that you have the following installed
-# * Pandoc, for converting LaTeX to HTML
+# * Pandoc, for converting LaTeX to various formats
 # * TGIF, for converting vector images in TGIF's file format, and,
 # * sed.
 #
@@ -11,8 +11,9 @@
 
 DATE = $(shell date +'%d %B %Y')
 
-OUTFILE := index.html
-TEMPLATEFILE := template.html
+OUTFILES := index.html index.md
+TEMPLATEFILE_HTML := template.html
+TEMPLATEFILE_MD := template.md
 
 TGIF_FLAGS := -print -pdf
 TGIF_EXT := obj
@@ -31,13 +32,18 @@ OUT_IMAGES := $(addprefix  $(IMAGE_OUT_DIR)/,$(addsuffix .$(IMAGE_OUT_EXT),$(IMA
 
 .PHONY: all clean
 
-all: $(OUTFILE) $(OUT_IMAGES)
+all: $(OUTFILES) $(OUT_IMAGES)
 
 clean:
-	rm $(OUTFILE)
+	rm $(OUTFILES)
 
 %.html: %.tex
-	sed -e '/CONTENT/{e pandoc -s --metadata date="Last Updated $(DATE)" --toc -t html $<' -e 'd}' $(TEMPLATEFILE) > $@
+	pandoc -s --base-header-level=2 --css main.css --template $(TEMPLATEFILE_HTML) \
+	       --metadata date="`date +'%d %B %Y'`" --toc -t html $< > $@
+
+%.md: %.tex
+	pandoc -s --css main.css --base-header-level=2 --template $(TEMPLATEFILE_MD) \
+	       --metadata date="`date +'%d %B %Y'`" --toc -t markdown $< > $@
 
 $(IMAGE_OUT_DIR)/%.$(IMAGE_OUT_EXT): $(IMAGE_DIR)/%.$(TGIF_EXT)
 	tgif $(TGIF_FLAGS) $<

@@ -18,10 +18,10 @@
 <h2>Foreword</h2>
 
 <p>This document is more or less a run down of my experience with making a codec
-for <a href="https://ffmpeg.org" title="FFMpeg Website">FFMpeg</a> with the intent of letting future developers have a
+for <a href="https://ffmpeg.org" title="FFmpeg Website">FFmpeg</a> with the intent of letting future developers have a
 slightly easier time of figuring out where things are.</p>
 
-<p>During my time with FFMpeg, I have only worked with developing a video codec
+<p>During my time with FFmpeg, I have only worked with developing a video codec
 up till now. Hence, my knowlegde is more or less limited to libavcodec,
 libavformat, and libavutil.</p>
 
@@ -32,7 +32,7 @@ libavformat, and libavutil.</p>
 
 <h2>Introduction</h2>
 
-<p>The FFMpeg suite is a program largely written in C. It's code base is extremely
+<p>The FFmpeg suite is a program largely written in C. It's code base is extremely
 large consisting of countless codecs, filters, formats, display/audio
 facilities, etc.</p>
 
@@ -42,7 +42,7 @@ codec:</p>
 <ol>
 <li><code>libavcodec</code>, the Encoder/Decoder library,</li>
 <li><code>libavformat</code>, the file format and audio/video demuxer library, and</li>
-<li><code>libavutil</code>, utility library used by other libraries in the FFMpeg suite.</li>
+<li><code>libavutil</code>, utility library used by other libraries in the FFmpeg suite.</li>
 </ol>
 
 <p>Other libraries that are of lesser concern are:</p>
@@ -57,13 +57,13 @@ routines.</li>
 
 <p>Developing for FFmpeg, or any other library for that matter, requires one to go
 through and read a large amount of source code in order to actually introduce
-a component or change in it, maybe moreso in FFMpeg. This document will outline
+a component or change in it, maybe moreso in FFmpeg. This document will outline
 some of the functions that one shall go through, and explain some things that
 are not directly mentioned within inline comments or documentation.</p>
 
 <h2>The Encoding/Decoding (Transcoding) Process</h2>
 
-<p>The <a href="https://ffmpeg.org/ffmpeg.html#toc-Detailed-description" title="FFMpeg CLI Documentation">man page</a> of the FFMpeg CLI interface provides a good
+<p>The <a href="https://ffmpeg.org/ffmpeg.html#toc-Detailed-description" title="FFmpeg CLI Documentation">man page</a> of the FFmpeg CLI interface provides a good
 introduction to how ffmpeg works.</p>
 
 <p>The FFmpeg CLI performs the following operations in the whole transcoding

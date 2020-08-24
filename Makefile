@@ -8,7 +8,7 @@
 # * TGIF, for converting vector images in TGIF's file format, and,
 # * sed.
 #
-# All of which are available as ubuntu and slackware packages.
+# All of which are available as Ubuntu and Slackware packages.
 
 
 OUTFILE := index.html
@@ -37,7 +37,7 @@ clean:
 	rm $(OUTFILE)
 
 %.html: %.md
-	sed -e '/CONTENT/{e markdown index.md' -e 'd}' $(TEMPLATEFILE) | \
+	sed -e '/CONTENT/{e markdown $<' -e 'd}' $(TEMPLATEFILE) | \
 	sed -e "s/{{TODAY}}/$(shell date +'%d %B %Y')/g" > $@
 
 $(IMAGE_OUT_DIR)/%.$(IMAGE_OUT_EXT): $(IMAGE_DIR)/%.$(TGIF_EXT)

@@ -4,7 +4,7 @@
 
 --------------------------------------------------------------------------------
 
-##Foreword
+## Foreword
 This document is more or less a run down of my experience with making a codec
 for [FFMpeg][ffmpeg-web] with the intent of letting future developers have a
 slightly easier time of figuring out where things are.
@@ -18,7 +18,7 @@ If you have any suggestions, please shoot me an email at aghorui (at) teknik
 
 This document is under public domain.
 
-##Introduction
+## Introduction
 The FFMpeg suite is a program largely written in C. It's code base is extremely
 large consisting of countless codecs, filters, formats, display/audio
 facilities, etc.
@@ -44,7 +44,7 @@ a component or change in it, maybe moreso in FFMpeg. This document will outline
 some of the functions that one shall go through, and explain some things that
 are not directly mentioned within inline comments or documentation.
 
-##The Encoding/Decoding (Transcoding) Process
+## The Encoding/Decoding (Transcoding) Process
 The [man page][ffmpeg-cli-doc] of the FFMpeg CLI interface provides a good
 introduction to how ffmpeg works.
 
@@ -61,14 +61,15 @@ ffmpeg -i in_file out_file
    pixel format, metadata, number of frames, aspect ratio, bitrate etc.
 3. **libavformat: Read Packet:** 
 
-##Timestamps
+## Timestamps
 Timestamps are simply a numerical quantity that represents time. Used in the
 following contexts:
+
 1. `pts` **- Presentation Timestamp:** Time at which a frame is presented to the
    user.
 2. `dts` **- Decode Timestamp:** Time at which 
 
-##Distinction between formats and encoded audio/video data
+## Distinction between formats and encoded audio/video data
 
 > ### Note for Developers with a Background in Object Oriented Languages
 > C does not have classes and similar provisions in the language, however, a

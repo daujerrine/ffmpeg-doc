@@ -4,7 +4,7 @@
     <title>FFmpeg Developer Manual</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
 <h1>Writing a codec for <code>libavcodec</code></h1>
@@ -84,10 +84,13 @@ pixel format, metadata, number of frames, aspect ratio, bitrate etc.</li>
 <h2>Timestamps</h2>
 
 <p>Timestamps are simply a numerical quantity that represents time. Used in the
-following contexts:
-1. <code>pts</code> <strong>- Presentation Timestamp:</strong> Time at which a frame is presented to the
-   user.
-2. <code>dts</code> <strong>- Decode Timestamp:</strong> Time at which </p>
+following contexts:</p>
+
+<ol>
+<li><code>pts</code> <strong>- Presentation Timestamp:</strong> Time at which a frame is presented to the
+user.</li>
+<li><code>dts</code> <strong>- Decode Timestamp:</strong> Time at which </li>
+</ol>
 
 <h2>Distinction between formats and encoded audio/video data</h2>
 

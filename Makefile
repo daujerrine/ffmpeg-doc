@@ -1,4 +1,15 @@
 # Public Domain
+#
+# Run `make` to generate the documentation
+#
+# This makefile assumes that you have the following installed
+# * A script named markdown that takes a markdown file as an argument, and
+#   outputs the converted HTML to stdout,
+# * TGIF, for converting vector images in TGIF's file format, and,
+# * sed.
+#
+# All of which are available as ubuntu and slackware packages.
+
 
 OUTFILE := index.html
 TEMPLATEFILE := template.html

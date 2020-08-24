@@ -1,23 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FFmpeg Developer Manual</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
 <h1>Writing a codec for <code>libavcodec</code></h1>
 
 <h3><em>Anamitra Ghorui</em></h3>
 
-<h3><em>Last updated 23 July 2020</em></h3>
+<h3><em>Last updated 24 August 2020</em></h3>
 
 <hr />
 
 <h2>Foreword</h2>
 
 <p>This document is more or less a run down of my experience with making a codec
-for <a href="https://ffmpeg.org" title="FFMpeg Website">FFMpeg</a> with the intent of letting future developers have a slightly
-easier time of figuring out where things are.</p>
+for <a href="https://ffmpeg.org" title="FFMpeg Website">FFMpeg</a> with the intent of letting future developers have a
+slightly easier time of figuring out where things are.</p>
 
 <p>During my time with FFMpeg, I have only worked with developing a video codec
 up till now. Hence, my knowlegde is more or less limited to libavcodec,
 libavformat, and libavutil.</p>
 
 <p>If you have any suggestions, please shoot me an email at aghorui (at) teknik
-(dot) io</p>
+(dot) io or open an issue on <a href="https://github.com/daujerrine/ffmpeg-doc">github</a>.</p>
 
 <p>This document is under public domain.</p>
 
@@ -54,8 +63,8 @@ are not directly mentioned within inline comments or documentation.</p>
 
 <h2>The Encoding/Decoding (Transcoding) Process</h2>
 
-<p>The <a href="https://ffmpeg.org/ffmpeg.html#toc-Detailed-description" title="FFMpeg CLI Documentation">man page</a> of the FFMpeg CLI interface provides a good introduction to
-how ffmpeg works.</p>
+<p>The <a href="https://ffmpeg.org/ffmpeg.html#toc-Detailed-description" title="FFMpeg CLI Documentation">man page</a> of the FFMpeg CLI interface provides a good
+introduction to how ffmpeg works.</p>
 
 <p>The FFmpeg CLI performs the following operations in the whole transcoding
 process.</p>
@@ -92,3 +101,5 @@ patterns such as for a set of decoder functions, parameters etc.</p>
 
 <p><img src="images/classes_and_c.svg" alt="C Classes analogy" title="" /></p>
 </blockquote>
+</body>
+</html>

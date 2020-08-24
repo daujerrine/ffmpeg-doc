@@ -1,6 +1,7 @@
 # Public Domain
 
 OUTFILE := index.html
+TEMPLATEFILE := template.html
 
 TGIF_FLAGS := -print -pdf
 TGIF_EXT := obj
@@ -22,11 +23,11 @@ OUT_IMAGES := $(addprefix  $(IMAGE_OUT_DIR)/,$(addsuffix .$(IMAGE_OUT_EXT),$(IMA
 all: $(OUTFILE) $(OUT_IMAGES)
 
 clean:
-	rm $(IMAGE_OUT_DIR)/*.$(IMAGE_OUT_FORMAT)
 	rm $(OUTFILE)
 
 %.html: %.md
-	markdown $< > $@
+	sed -e '/CONTENT/{e markdown index.md' -e 'd}' $(TEMPLATEFILE) | \
+	sed -e "s/{{TODAY}}/$(shell date +'%d %B %Y')/g" > $@
 
 $(IMAGE_OUT_DIR)/%.$(IMAGE_OUT_EXT): $(IMAGE_DIR)/%.$(TGIF_EXT)
 	tgif $(TGIF_FLAGS) $<

@@ -1,20 +1,20 @@
 #                      Writing a codec for `libavcodec`
 ###                          _Anamitra Ghorui_
-###                     _Last updated 23 July 2020_
+###                       _Last updated {{TODAY}}_
 
 --------------------------------------------------------------------------------
 
 ##Foreword
 This document is more or less a run down of my experience with making a codec
-for [FFMpeg][1] with the intent of letting future developers have a slightly
-easier time of figuring out where things are.
+for [FFMpeg][ffmpeg-web] with the intent of letting future developers have a
+slightly easier time of figuring out where things are.
 
 During my time with FFMpeg, I have only worked with developing a video codec
 up till now. Hence, my knowlegde is more or less limited to libavcodec,
 libavformat, and libavutil.
 
 If you have any suggestions, please shoot me an email at aghorui (at) teknik
-(dot) io
+(dot) io or open an issue on [github][article-github].
 
 This document is under public domain.
 
@@ -45,8 +45,8 @@ some of the functions that one shall go through, and explain some things that
 are not directly mentioned within inline comments or documentation.
 
 ##The Encoding/Decoding (Transcoding) Process
-The [man page][2] of the FFMpeg CLI interface provides a good introduction to
-how ffmpeg works.
+The [man page][ffmpeg-cli-doc] of the FFMpeg CLI interface provides a good
+introduction to how ffmpeg works.
 
 The FFmpeg CLI performs the following operations in the whole transcoding
 process.
@@ -78,5 +78,6 @@ following contexts:
 >
 > ![C Classes analogy](images/classes_and_c.svg)
 
-[1]: https://ffmpeg.org (FFMpeg Website) 
-[2]: https://ffmpeg.org/ffmpeg.html#toc-Detailed-description (FFMpeg CLI Documentation)
+[ffmpeg-web]: https://ffmpeg.org (FFMpeg Website)
+[article-github]: https://github.com/daujerrine/ffmpeg-doc
+[ffmpeg-cli-doc]: https://ffmpeg.org/ffmpeg.html#toc-Detailed-description (FFMpeg CLI Documentation)

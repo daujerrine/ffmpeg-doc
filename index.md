@@ -1,4 +1,4 @@
-#                      Writing a codec for `libavcodec`
+#                   DRAFT: Writing a codec for `libavcodec`
 ###                          _Anamitra Ghorui_
 ###                       _Last updated {{TODAY}}_
 
@@ -69,7 +69,7 @@ following contexts:
    user.
 2. `dts` **- Decode Timestamp:** Time at which 
 
-## Distinction between formats and encoded audio/video data
+## Distinction Between Container Formats and Encoded Audio/Video Data
 
 > ### Note for Developers with a Background in Object Oriented Languages
 > C does not have classes and similar provisions in the language, however, a

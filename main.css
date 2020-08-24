@@ -7,9 +7,10 @@ img {
     max-width: 100%;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 700px), print {
 body {
     width: 100%;
     padding: 10px;
 }
 }
+

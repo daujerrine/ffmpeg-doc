@@ -3,13 +3,13 @@
 # Run `make` to generate the documentation
 #
 # This makefile assumes that you have the following installed
-# * A script named markdown that takes a markdown file as an argument, and
-#   outputs the converted HTML to stdout,
+# * Pandoc, for converting LaTeX to HTML
 # * TGIF, for converting vector images in TGIF's file format, and,
 # * sed.
 #
 # All of which are available as Ubuntu and Slackware packages.
 
+DATE = $(shell date +'%d %B %Y')
 
 OUTFILE := index.html
 TEMPLATEFILE := template.html
@@ -36,9 +36,8 @@ all: $(OUTFILE) $(OUT_IMAGES)
 clean:
 	rm $(OUTFILE)
 
-%.html: %.md
-	sed -e '/CONTENT/{e markdown $<' -e 'd}' $(TEMPLATEFILE) | \
-	sed -e "s/{{TODAY}}/$(shell date +'%d %B %Y')/g" > $@
+%.html: %.tex
+	sed -e '/CONTENT/{e pandoc -s --metadata date="Last Updated $(DATE)" --toc -t html $<' -e 'd}' $(TEMPLATEFILE) > $@
 
 $(IMAGE_OUT_DIR)/%.$(IMAGE_OUT_EXT): $(IMAGE_DIR)/%.$(TGIF_EXT)
 	tgif $(TGIF_FLAGS) $<

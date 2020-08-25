@@ -50,7 +50,7 @@ clean:
 %.html: %.tex $(TEMPLATEFILE_HTML)
 	sed "s/\\includesvg/\\includegraphics/g" $< |   \
 	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_EXTRA_FLAGS) \
-	          --template $(TEMPLATEFILE_HTML) -f latex -t html > $@
+	          --template $(TEMPLATEFILE_HTML) -f latex --biblatex -t html > $@
 
 %.md: %.tex $(TEMPLATEFILE_MD)
 	sed "s/\\includesvg/\\includegraphics/g" $< |   \

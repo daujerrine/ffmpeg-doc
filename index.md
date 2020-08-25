@@ -25,7 +25,7 @@ libavcodec, libavformat, and libavutil.
 
 If you have any suggestions, please shoot me an email at aghorui (at)
 teknik (dot) io or open an issue on
-[github](https://github.com/daujerrine/ffmpeg-doc).
+[Github](https://github.com/daujerrine/ffmpeg-doc).
 
 This document is under public domain.
 
@@ -107,3 +107,5 @@ Distinction Between Container Formats and Encoded Audio/Video Data
 > functions, parameters etc.
 >
 > ![image](images/classes_and_c.svg)
+
+9 ABCDEF

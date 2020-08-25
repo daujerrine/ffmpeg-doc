@@ -15,6 +15,15 @@ OUTFILES := index.html index.md
 TEMPLATEFILE_HTML := template.html
 TEMPLATEFILE_MD := template.md
 
+PANDOC := pandoc
+PANDOC_FLAGS = -s --toc --css main.css \
+               --metadata date="`date +'%d %B %Y'`"
+
+# If you are using an old version of pandoc, coment the below line and uncomment
+# the line after it.
+# PANDOC_EXTRA_FLAGS = --shift-heading-level-by=1
+PANDOC_EXTRA_FLAGS = --base-header-level=2
+
 TGIF_FLAGS := -print -pdf
 TGIF_EXT := obj
 TGIF_INTERM_EXT := pdf
@@ -38,12 +47,14 @@ clean:
 	rm $(OUTFILES)
 
 %.html: %.tex
-	pandoc -s --base-header-level=2 --css main.css --template $(TEMPLATEFILE_HTML) \
-	       --metadata date="`date +'%d %B %Y'`" --toc -t html $< > $@
+	sed "s/\\includesvg/\\includegraphics/g" $< |   \
+	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_EXTRA_FLAGS) \
+	          --template $(TEMPLATEFILE_HTML) -f latex -t html > $@
 
 %.md: %.tex
-	pandoc -s --css main.css --base-header-level=2 --template $(TEMPLATEFILE_MD) \
-	       --metadata date="`date +'%d %B %Y'`" --toc -t markdown $< > $@
+	sed "s/\\includesvg/\\includegraphics/g" $< |   \
+	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_EXTRA_FLAGS) \
+	          --template $(TEMPLATEFILE_MD) -f latex -t markdown > $@
 
 $(IMAGE_OUT_DIR)/%.$(IMAGE_OUT_EXT): $(IMAGE_DIR)/%.$(TGIF_EXT)
 	tgif $(TGIF_FLAGS) $<

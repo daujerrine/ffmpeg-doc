@@ -4,15 +4,12 @@
 \usepackage[superscript,biblabel]{cite}
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
-\usepackage{multirow}
-\usepackage{multicol}
-\usepackage{exceltex}
 \usepackage{graphicx}
 \usepackage[font=small,labelfont=bf]{caption}
-\newcommand{\tss}[1]{\textsuperscript{#1}}
 \usepackage{parskip}
 \usepackage{svg}
 
+\newcommand{\tss}[1]{\textsuperscript{#1}}
 
 \begin{document}
 \title{DRAFT: Writing a codec for \texttt{libavcodec}}
@@ -43,31 +40,39 @@ There are 3 sub-libraries that one is mostly concerned with while writing a code
 \begin{enumerate}
 \item \texttt{libavcodec}, the Encoder/Decoder library,
 \item \texttt{libavformat}, the file format and audio/video demuxer library, and
-\item \texttt{libavutil}, utility library used by other libraries in the FFmpeg suite.
+\item \texttt{libavutil}, utility library used by other libraries in the FFmpeg 
+      suite.
 \end{enumerate}
 
 Other libraries that are of lesser concern are:
 
 \begin{enumerate}
-\item \texttt{libavfilter}, the audio/video data transformation (filtering) library. A filter (scale) is needed if you want to convert between pixel formats (discussed later)).
-\item \texttt{libswscale}, included by the scale filter. Includes pixel format conversion routines.
+\item \texttt{libavfilter}, the audio/video data transformation (filtering) 
+      library. A filter (scale) is needed if you want to convert between pixel 
+      formats (discussed later)).
+\item \texttt{libswscale}, included by the scale filter. Includes pixel format 
+      conversion routines.
 \end{enumerate}
 
 Developing for FFmpeg, or any other library for that matter, requires one to go through and read a large amount of source code in order to actually introduce a component or change in it, maybe moreso in FFmpeg. This document will outline some of the functions that one shall go through, and explain some things that are not directly mentioned within inline comments or documentation.
 
 \section{The Encoding/Decoding (Transcoding) Process}
 
-The \href{https://ffmpeg.org/ffmpeg.html\#toc-Detailed-description}{man page} of the FFmpeg CLI interface provides a good introduction to how ffmpeg works.
+\includesvg{images/libavcodec.svg}
+
+The \href{https://ffmpeg.org/ffmpeg.html\#toc-Detailed-description}{man page} 
+of the FFmpeg CLI interface provides a good introduction to how ffmpeg works.
 
 The FFmpeg CLI performs the following operations in the whole transcoding process.
 
-\texttt{
-ffmpeg -i in\_file out\_file
-}
+\texttt{ ffmpeg -i in\_file out\_file }
 
 \begin{enumerate}
-\item \textbf{libavformat: Probing:} The input file is \emph{probed} to determine the file format.
-\item \textbf{libavformat: Read Header:} The header is read to get values like duration, pixel format, metadata, number of frames, aspect ratio, bitrate etc.
+\item \textbf{libavformat: Probing:} The input file is \emph{probed} to 
+      determine the file format.
+\item \textbf{libavformat: Read Header:} The header is read to get values like 
+      duration, pixel format, metadata, number of frames, aspect ratio, bitrate 
+      etc.
 \item \textbf{libavformat: Read Packet:} 
 \end{enumerate}
 
@@ -76,7 +81,8 @@ ffmpeg -i in\_file out\_file
 Timestamps are simply a numerical quantity that represents time. Used in the following contexts:
 
 \begin{enumerate}
-\item \texttt{pts} \textbf{- Presentation Timestamp:} Time at which a frame is presented to the user.
+\item \texttt{pts} \textbf{- Presentation Timestamp:} Time at which a frame is 
+      presented to the user.
 \item \texttt{dts} \textbf{- Decode Timestamp:} Time at which 
 \end{enumerate}
 
@@ -89,7 +95,7 @@ similar method of programming is observable over here in the form of
 \emph{context} structs and functions. Storage structs are used to handle 
 repetitive patterns such as for a set of decoder functions, parameters etc.
 
-\includesvg{images/classes\_and\_c.svg}
+\includesvg{images/classes_and_c.svg}
 \end{quote}
 
 \end{document}

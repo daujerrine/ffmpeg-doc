@@ -32,7 +32,7 @@ This document is under public domain.
 Introduction
 ------------
 
-The FFmpeg suite is a program largely written in C. It’s code base is
+The FFmpeg suite is a program largely written in C. It's code base is
 extremely large consisting of countless codecs, filters, formats,
 display/audio facilities, etc.
 
@@ -64,6 +64,8 @@ inline comments or documentation.
 
 The Encoding/Decoding (Transcoding) Process
 -------------------------------------------
+
+![image](images/libavcodec.svg)
 
 The [man page](https://ffmpeg.org/ffmpeg.html#toc-Detailed-description)
 of the FFmpeg CLI interface provides a good introduction to how ffmpeg

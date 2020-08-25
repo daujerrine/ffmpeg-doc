@@ -11,13 +11,13 @@
 
 DATE = $(shell date +'%d %B %Y')
 
-OUTFILES := index.html index.md
+OUTFILES          := index.html index.md
 TEMPLATEFILE_HTML := template.html
-TEMPLATEFILE_MD := template.md
+TEMPLATEFILE_MD   := template.md
 
-PANDOC := pandoc
-PANDOC_FLAGS = -s --toc --css main.css \
-               --metadata date="`date +'%d %B %Y'`"
+PANDOC       := pandoc
+PANDOC_FLAGS  = -s --toc --css main.css \
+                --metadata date="`date +'%d %B %Y'`"
 
 # You may want to uncomment the following line if you are using a newer version
 # of pandoc
@@ -25,19 +25,19 @@ PANDOC_FLAGS = -s --toc --css main.css \
 # PANDOC_EXTRA_FLAGS = --shift-heading-level-by=1
 PANDOC_EXTRA_FLAGS = --base-header-level=2
 
-TGIF_FLAGS := -print -pdf
-TGIF_EXT := obj
+TGIF_FLAGS      := -print -pdf
+TGIF_EXT        := obj
 TGIF_INTERM_EXT := pdf
-INKSCAPE := inkscape
-INKSCAPE_FLAGS := -z -T -D -l
+INKSCAPE        := inkscape
+INKSCAPE_FLAGS  := -z -T -D -l
 
 IMAGE_OUT_EXT := svg
-IMAGE_DIR := source-images
+IMAGE_DIR     := source-images
 IMAGE_OUT_DIR := images
 
-IMAGES := classes_and_c \
-          format        \
-          libavcodec
+IMAGES     := classes_and_c \
+              format        \
+              libavcodec
 OUT_IMAGES := $(addprefix  $(IMAGE_OUT_DIR)/,$(addsuffix .$(IMAGE_OUT_EXT),$(IMAGES)))
 
 .PHONY: all clean

@@ -22,7 +22,8 @@
 <ul>
 <li><a href="#foreword">Foreword</a></li>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#the-encodingdecoding-transcoding-process">The Encoding/Decoding (Transcoding) Process</a><ul>
+<li><a href="#the-encodingdecoding-transcoding-process">The Encoding/Decoding (Transcoding) Process</a>
+<ul>
 <li><a href="#timestamps">Timestamps</a></li>
 </ul></li>
 <li><a href="#distinction-between-container-formats-and-encoded-audiovideo-data">Distinction Between Container Formats and Encoded Audio/Video Data</a></li>
@@ -48,6 +49,7 @@
 </ol>
 <p>Developing for FFmpeg, or any other library for that matter, requires one to go through and read a large amount of source code in order to actually introduce a component or change in it, maybe moreso in FFmpeg. This document will outline some of the functions that one shall go through, and explain some things that are not directly mentioned within inline comments or documentation.</p>
 <h2 id="the-encodingdecoding-transcoding-process">The Encoding/Decoding (Transcoding) Process</h2>
+<p><img src="images/libavcodec.svg" alt="image" /></p>
 <p>The <a href="https://ffmpeg.org/ffmpeg.html#toc-Detailed-description">man page</a> of the FFmpeg CLI interface provides a good introduction to how ffmpeg works.</p>
 <p>The FFmpeg CLI performs the following operations in the whole transcoding process.</p>
 <p><code> ffmpeg -i in_file out_file </code></p>

@@ -19,8 +19,9 @@ PANDOC := pandoc
 PANDOC_FLAGS = -s --toc --css main.css \
                --metadata date="`date +'%d %B %Y'`"
 
-# If you are using an old version of pandoc, coment the below line and uncomment
-# the line after it.
+# You may want to uncomment the following line if you are using a newer version
+# of pandoc
+#
 # PANDOC_EXTRA_FLAGS = --shift-heading-level-by=1
 PANDOC_EXTRA_FLAGS = --base-header-level=2
 
@@ -46,12 +47,12 @@ all: $(OUTFILES) $(OUT_IMAGES)
 clean:
 	rm $(OUTFILES)
 
-%.html: %.tex
+%.html: %.tex $(TEMPLATEFILE_HTML)
 	sed "s/\\includesvg/\\includegraphics/g" $< |   \
 	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_EXTRA_FLAGS) \
 	          --template $(TEMPLATEFILE_HTML) -f latex -t html > $@
 
-%.md: %.tex
+%.md: %.tex $(TEMPLATEFILE_MD)
 	sed "s/\\includesvg/\\includegraphics/g" $< |   \
 	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_EXTRA_FLAGS) \
 	          --template $(TEMPLATEFILE_MD) -f latex -t markdown > $@

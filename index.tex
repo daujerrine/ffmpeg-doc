@@ -1,6 +1,5 @@
 \documentclass{article}
 \usepackage[top=2cm,bottom=4cm,left=2.5cm,right=2.5cm]{geometry}
-\usepackage{lipsum}
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
 \usepackage[superscript,biblabel]{cite}
@@ -33,11 +32,15 @@ If you have any suggestions, please shoot me an email at aghorui (at) teknik
 (dot) io or open an issue on 
 \href{https://github.com/daujerrine/ffmpeg-doc}{Github}.
 
-This document is under public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License. To view a copy of this license, visit
+\href{http://creativecommons.org/licenses/by-sa/4.0/}{here}.
 
 \section{Introduction}
 
-The FFmpeg suite is a program largely written in C. It's code base is extremely large consisting of countless codecs, filters, formats, display/audio facilities, etc.
+The FFmpeg suite is a program largely written in C. It's code base is extremely
+large consisting of countless codecs, filters, formats, display/audio facilities,
+etc.
 
 There are 3 sub-libraries that one is mostly concerned with while writing a codec:
 
@@ -58,7 +61,11 @@ Other libraries that are of lesser concern are:
       conversion routines.
 \end{enumerate}
 
-Developing for FFmpeg, or any other library for that matter, requires one to go through and read a large amount of source code in order to actually introduce a component or change in it, maybe moreso in FFmpeg. This document will outline some of the functions that one shall go through, and explain some things that are not directly mentioned within inline comments or documentation.
+Developing for FFmpeg, or any other library for that matter, requires one to go
+through and read a large amount of source code in order to actually introduce a
+component or change in it, maybe moreso in FFmpeg. This document will outline
+some of the functions that one shall go through, and explain some things that
+are not directly mentioned within inline comments or documentation.
 
 \section{The Encoding/Decoding (Transcoding) Process}
 
@@ -82,7 +89,8 @@ The FFmpeg CLI performs the following operations in the whole transcoding proces
 
 \subsection{Timestamps}
 
-Timestamps are simply a numerical quantity that represents time. Used in the following contexts:
+Timestamps are simply a numerical quantity that represents time. Used in the
+following contexts:
 
 \begin{enumerate}
 \item \texttt{pts} \textbf{- Presentation Timestamp:} Time at which a frame is 
@@ -103,6 +111,7 @@ repetitive patterns such as for a set of decoder functions, parameters etc.
 \end{quote}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{thebibliography}{9}
 	\bibitem{ffmpeg}
 	ABCDEF

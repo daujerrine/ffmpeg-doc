@@ -1,6 +1,6 @@
 # DRAFT: Writing a codec for `libavcodec`
 ## Anamitra Ghorui
-## *Last updated 25 August 2020*
+## *Last updated 24 September 2020*
 
 --------------------------------------------------------------------------------
 
@@ -27,7 +27,9 @@ If you have any suggestions, please shoot me an email at aghorui (at)
 teknik (dot) io or open an issue on
 [Github](https://github.com/daujerrine/ffmpeg-doc).
 
-This document is under public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike
+4.0 International License. To view a copy of this license, visit
+[here](http://creativecommons.org/licenses/by-sa/4.0/).
 
 Introduction
 ------------
